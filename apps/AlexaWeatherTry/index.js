@@ -22,11 +22,12 @@ app.intent('WelcomeIntent', function (request, response) {
 app.intent('WeatherIntent',
     function (request, response) {
         var city = request.slot('cityname');
-        var weatherreport=require('./weather')(city);
-        let desc = weather.description;
-        let humidity = main.humidity;
+
         if (city) {
-            response.say("Today weather looks " + desc + " in " + city + "with humidity is " + humidity+"Do you like to continue.").shouldEndSession(false);
+            var weatherreport = require('./weather')(city);
+            let desc = weather.description;
+            let humidity = main.humidity;
+            response.say("Today weather looks " + desc + " in " + city + "with humidity is " + humidity + "Do you like to continue.").shouldEndSession(false);
         } else {
             response.say("please tell me your city name").shouldEndSession(false);
         }
