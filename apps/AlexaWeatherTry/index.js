@@ -26,20 +26,20 @@ app.intent('WelcomeIntent',{
 }, function (request, response) {
     response.say("Welcome to Weather Forecasting do you want to know about today's Monsoon");
 });
-app.intent('sayNumber', {
-        "slots": {
-            "number": "NUMBER"
-        },
-        "utterances": [
-            "say the number {1-100|number}",
-            "give me the number {1-100|number}",
-            "tell me the number {1-100|number}",
-            "I want to hear you say the number {1-100|number}"
-        ]
-    },
-    function (request, response) {
-        var number = request.slot('number');
-        response.say("You asked for the number " + number);
-    }
-);
+// app.intent('sayNumber', {
+//         "slots": {
+//             "number": "NUMBER"
+//         },
+//         "utterances": [
+//             "say the number {1-100|number}",
+//             "give me the number {1-100|number}",
+//             "tell me the number {1-100|number}",
+//             "I want to hear you say the number {1-100|number}"
+//         ]
+//     },
+//     function (request, response) {
+//         var number = request.slot('number');
+//         response.say("You asked for the number " + number);
+//     }
+// );
 module.exports = app;
