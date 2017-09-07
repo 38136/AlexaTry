@@ -17,7 +17,7 @@ app.error = function (exception, request, response) {
     response.say('Sorry an error occured ' + error.message);
 };
 app.intent('WelcomeIntent', function (request, response) {
-    response.say("Welcome to Weather Forecasting do you want to know about today's Monsoon").shouldEndSession(false).remprompt('I\'m still listening.');
+    response.say("Welcome to Weather Forecasting do you want to know about today's Monsoon").shouldEndSession(false);
 });
 // app.intent('WeatherIntent',
 //     function (request, response) {
