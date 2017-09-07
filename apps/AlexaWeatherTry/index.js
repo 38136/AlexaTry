@@ -19,18 +19,18 @@ app.error = function (exception, request, response) {
 app.intent('WelcomeIntent', function (request, response) {
     response.say("Welcome to Weather Forecasting do you want to know about today's Monsoon").shouldEndSession(false);
 });
-// app.intent('WeatherIntent',
-//     function (request, response) {
-//         var city = request.slot('cityname');
-//         var weatherreport=require('./weather')(city);
-//         let desc = weather.description;
-//         let humidity = main.humidity;
-//         if (city) {
-//             response.say("Today weather looks " + description + " in " + city + "with humidity is " + humidity+"Do you like to continue.").shouldEndSession(false).remprompt('I\'m still listening.');
-//         } else {
-//             response.say("please tell me your city name").shouldEndSession(false).remprompt('I\'m still listening.');
-//         }
-//     });
+app.intent('WeatherIntent',
+    function (request, response) {
+        var city = request.slot('cityname');
+        var weatherreport=require('./weather')(city);
+        let desc = weather.description;
+        let humidity = main.humidity;
+        if (city) {
+            response.say("Today weather looks " + description + " in " + city + "with humidity is " + humidity+"Do you like to continue.").shouldEndSession(false);
+        } else {
+            response.say("please tell me your city name").shouldEndSession(false);
+        }
+    });
 
 app.intent('ThankYouIntent', function (request, response) {
     response.say("Thank you, Namdri and dhanniyavaath");
