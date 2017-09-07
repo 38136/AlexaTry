@@ -6,7 +6,7 @@ var app = new alexa.app('test-skill');
 
 
 app.launch(function (request, response) {
-    response.say('Welcome to your test skill').reprompt('Way to go. You got it to run. Bad ass.').shouldEndSession(false);
+    response.say('Welcome to Weather Forecasting').reprompt('You want to know about the today forecast').shouldEndSession(false);
 });
 
 
@@ -16,8 +16,15 @@ app.error = function (exception, request, response) {
     console.log(response);
     response.say('Sorry an error occured ' + error.message);
 };
-app.intent('WelcomeIntent', function (request, response) {
-    response.say("Thanks have a nice day");
+app.intent('WelcomeIntent',{
+    "utterances" :[
+        "hi",
+        "hello",
+        
+    ]
+
+}, function (request, response) {
+    response.say("Welcome to Weather Forecasting do you want to know about today's Monsoon");
 });
 app.intent('sayNumber', {
         "slots": {
@@ -35,5 +42,4 @@ app.intent('sayNumber', {
         response.say("You asked for the number " + number);
     }
 );
-
 module.exports = app;
