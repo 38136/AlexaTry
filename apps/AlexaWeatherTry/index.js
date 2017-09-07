@@ -16,30 +16,17 @@ app.error = function (exception, request, response) {
     console.log(response);
     response.say('Sorry an error occured ' + error.message);
 };
-app.intent('WelcomeIntent',{
-    "utterances" :[
-        "hi",
-        "hello",
-        
-    ]
-
-}, function (request, response) {
+app.intent('WelcomeIntent', function (request, response) {
     response.say("Welcome to Weather Forecasting do you want to know about today's Monsoon");
 });
-app.intent('sayNumber', {
-        "slots": {
-            "number": "NUMBER"
-        },
-        "utterances": [
-            "say the number {1-100|number}",
-            "give me the number {1-100|number}",
-            "tell me the number {1-100|number}",
-            "I want to hear you say the number {1-100|number}"
-        ]
-    },
+app.intent('WeatherIntent',
     function (request, response) {
-        var number = request.slot('number');
-        response.say("You asked for the number " + number);
-    }
-);
+        var city = request.slot('cityname');
+        if (city) {
+
+            response.say("Today weather looks great in " + city + "with 33");
+
+        }
+    });
+
 module.exports = app;
