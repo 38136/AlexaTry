@@ -11,5 +11,8 @@
     "url": "git+https://github.com/38136/AlexaWeatherTry.git"
   },
   "author": "Anitha Senthilnathan",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "alexa-app": "^4.1.0"
+  }
 }
