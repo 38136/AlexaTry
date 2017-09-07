@@ -17,15 +17,15 @@ app.error = function (exception, request, response) {
     response.say('Sorry an error occured ' + error.message);
 };
 app.intent('WelcomeIntent', function (request, response) {
-    response.say("Welcome to Weather Forecasting do you want to know about today's Monsoon");
+    response.say("Welcome to Weather Forecasting do you want to know about today's Monsoon").shouldEndSession(false);
 });
 app.intent('WeatherIntent',
     function (request, response) {
         var city = request.slot('cityname');
         if (city) {
-
             response.say("Today weather looks great in " + city + "with 33");
-
+        }else {
+            response.say("please tell me your city name").shouldEndSession(false);
         }
     });
 
