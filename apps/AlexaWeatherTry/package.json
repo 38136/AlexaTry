@@ -13,6 +13,7 @@
   "author": "Anitha Senthilnathan",
   "license": "ISC",
   "dependencies": {
-    "alexa-app": "^4.1.0"
+    "alexa-app": "^4.1.0",
+    "request-sync": "^1.0.0"
   }
 }
