@@ -16,14 +16,7 @@ app.error = function (exception, request, response) {
     console.log(response);
     response.say('Sorry an error occured ' + error.message);
 };
-app.intent('WelcomeIntent',{
-    "utterances" :[
-        "hi",
-        "hello",
-        
-    ]
-
-}, function (request, response) {
+app.intent('WelcomeIntent', function (request, response) {
     response.say("Welcome to Weather Forecasting do you want to know about today's Monsoon");
 });
 // app.intent('sayNumber', {
