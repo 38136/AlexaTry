@@ -26,7 +26,7 @@ app.intent('WeatherIntent',
         let desc = weather.description;
         let humidity = main.humidity;
         if (city) {
-            response.say("Today weather looks " + description + " in " + city + "with humidity is " + humidity+"Do you like to continue.").shouldEndSession(false);
+            response.say("Today weather looks " + desc + " in " + city + "with humidity is " + humidity+"Do you like to continue.").shouldEndSession(false);
         } else {
             response.say("please tell me your city name").shouldEndSession(false);
         }
