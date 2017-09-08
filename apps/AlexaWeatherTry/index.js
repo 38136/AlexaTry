@@ -3,8 +3,9 @@ module.change_code = 1;
 
 var alexa = require('alexa-app');
 var app = new alexa.app('test-skill');
-const request = require('request');
+var requestpackage = require('request');
 var rp = require('request-promise');
+var http = require('http');
 
 
 app.launch(function (request, response) {
@@ -33,34 +34,42 @@ app.intent('WeatherIntent', {
             var options = {
                 method: 'GET',
                 uri: `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=f124bbe4bc06cf62b4dbbc17cb4c0692`,
-                headers: {
-                    'User-Agent': 'Request-Promise'
-                },
-                json: true
+                json: true,
+                timeout: 160
             };
-            rp(options).then(function (repos) {
-                console.log('user has %d repos', repos.length);
-                let desc = repos.weather.description;
-                let humidity = repos.main.humidity;
-                let visibility = repos.googleMapResults.visibility;
-                let wind = repos.googleMapResults.wind.speed;
-                response.say(`Today weather looks  ${desc}  in  ${city}  with humidity is ${humidity}  temperature is ${temp} visibility is ${visibility} and the wind speed is ${wind} Do you like to continue.`).shouldEndSession(false);
+            // console.log("logging the error" + JSON.stringify(options));
+            // rp(options).then(function (response) {
+            //     console.log('user has %d repos', response.length);
+            //     let desc = repos.weather.description;
+            //     let humidity = repos.main.humidity;
+            //     let visibility = repos.googleMapResults.visibility;
+            //     let wind = repos.googleMapResults.wind.speed;
+            //     response.say(`Today weather looks  ${desc}  in  ${city}  with humidity is ${humidity}  temperature is ${temp} visibility is ${visibility} and the wind speed is ${wind} Do you like to continue.`).shouldEndSession(false);
 
-            }).catch(function (err) {
-                console.log("api called failed");
+            // }).catch(function (err) {
+            //     console.log("api called failed");
+            // });
+
+
+            requestpackage(options, function (error, response, body) {
+                var data = JSON.stringify(body);
+                let desc = data.weather.description;
+                let humidity = data.main.humidity;
+                let visibility = data.googleMapResults.visibility;
+                let wind = data.googleMapResults.wind.speed;
+                response.say(`Today weather looks  ${desc}  in  ${city}  with humidity is ${humidity}  temperature is ${temp} visibility is ${visibility} and the wind speed is ${wind} Do you like to continue.`).shouldEndSession(false);
+                if (error) {
+                    return console.log(error);
+                }
+                console.log(JSON.stringify(response));
+                console.log(data.name);
+
             });
-            // let desc = weather.description;
-            // let humidity = main.humidity;
-            // let visibility = googleMapResults.visibility;
-            // let wind = googleMapResults.wind.speed;
-            //response.say("Today weather looks " + desc + " in " + city + "with humidity is " + humidity + "Do you like to continue.").shouldEndSession(false);
-            // response.say(`Today weather looks  ${desc}  in  ${city}  with humidity is ${humidity}  temperature is ${temp} visibility is ${visibility} and the wind speed is ${wind} Do you like to continue.`).shouldEndSession(false);
+
         } else {
             response.say("please tell me your city name").shouldEndSession(false);
         }
     });
-
-
 app.intent('ThankYouIntent', function (request, response) {
     response.say("Thank you, Namdri and dhanniyavaath");
 });
