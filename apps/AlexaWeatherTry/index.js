@@ -31,6 +31,7 @@ app.intent('WeatherIntent', {
 
         if (city) {
             var options = {
+                method: 'GET',
                 uri: `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=f124bbe4bc06cf62b4dbbc17cb4c0692`,
                 headers: {
                     'User-Agent': 'Request-Promise'
