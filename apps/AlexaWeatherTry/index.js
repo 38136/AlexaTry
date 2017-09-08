@@ -26,12 +26,10 @@ app.intent('WeatherIntent',
         if (city) {
             async function googlemap() {
                 const appId = f124bbe4bc06cf62b4dbbc17cb4c0692;
-                var googleMapResults = await (await
-                    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiId},`)).json();
+                var googleMapResults = await (await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiId},`)).json();
                 let desc = googleMapResults.weather.description;
                 let humidity = googleMapResults.main.humidity;
-                response.say("Today weather looks " + desc + " in " + city + "with humidity is " + humidity + "Do you like to continue.").shouldEndSession(false);
-
+                response.say(`Today weather looks  ${desc}  in  ${city} with humidity is ${humidity} and the temperature is ${temp} Do you like to continue.`).shouldEndSession(false);
             }
         } else {
             response.say("please tell me your city name").shouldEndSession(false);
@@ -45,12 +43,12 @@ app.intent('ThankYouIntent', function (request, response) {
 module.exports = app;
 
 
-    //     if (city) {
-    //         var weatherreport = require('./weather')(city);
-    //         let desc = weather.description;
-    //         let humidity = main.humidity;
-    //         response.say("Today weather looks " + desc + " in " + city + "with humidity is " + humidity + "Do you like to continue.").shouldEndSession(false);
-    //     } else {
-    //         response.say("please tell me your city name").shouldEndSession(false);
-    //     }
-    // });
+//     if (city) {
+//         var weatherreport = require('./weather')(city);
+//         let desc = weather.description;
+//         let humidity = main.humidity;
+//         response.say("Today weather looks " + desc + " in " + city + "with humidity is " + humidity + "Do you like to continue.").shouldEndSession(false);
+//     } else {
+//         response.say("please tell me your city name").shouldEndSession(false);
+//     }
+// });

@@ -34,14 +34,6 @@ app.intent('WeatherIntent',
         }
     });
 
-
-
-
-
-
-
-
-
 app.intent('ThankYouIntent', function (request, response) {
     response.say("Thank you, Namdri and dhanniyavaath see you soon");
 });
