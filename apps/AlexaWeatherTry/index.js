@@ -63,7 +63,6 @@ app.intent('WeatherIntent', {
                 }
                 console.log(JSON.stringify(response));
                 console.log(data.name);
-
             });
 
         } else {
