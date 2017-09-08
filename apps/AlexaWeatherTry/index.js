@@ -27,7 +27,8 @@ app.intent('WeatherIntent',
             var weatherreport = require('./weather')(city);
             let desc = weather.description;
             let humidity = main.humidity;
-            response.say("Today weather looks " + desc + " in " + city + "with humidity is " + humidity + "Do you like to continue.").shouldEndSession(false);
+            //response.say("Today weather looks " + desc + " in " + city + "with humidity is " + humidity + "Do you like to continue.").shouldEndSession(false);
+			response.say(`Today weather looks  ${desc}  in  ${city}  with humidity is ${humidity}  temperature is ${temp} visibility is ${visibility} and the wind speed is ${wind} Do you like to continue.`).shouldEndSession(false);
         } else {
             response.say("please tell me your city name").shouldEndSession(false);
         }
