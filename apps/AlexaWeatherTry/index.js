@@ -6,7 +6,7 @@ var app = new alexa.app('test-skill');
 
 
 app.launch(function (request, response) {
-    response.say('Welcome to Weather Forecasting').reprompt('You want to know about the today forecast').shouldEndSession(false).remprompt('I\'m still listening.');
+    response.say('Welcome to Weather Forecasting do you want to know about todays Monsoon').shouldEndSession(false);
 });
 
 
