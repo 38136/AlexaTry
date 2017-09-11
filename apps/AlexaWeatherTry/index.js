@@ -1,4 +1,4 @@
-module.change_code = 1;
+// module.change_code = 1;
 'use strict';
 
 var alexa = require('alexa-app');
@@ -83,9 +83,7 @@ app.intent('WeatherIntent', {
                     let wind = res.body.wind.speed;
                     let temp = res.body.main.temp;
                     let city = res.body.name;
-                    Citydata = `Today weather looks  ${desc}  in  ${city}  with humidity is ${humidity} degree
-                      temperature is ${temp} degree visibility is ${visibility} and the wind speed 
-                      is ${wind}. Do you like to continue.`;
+                    Citydata = `Today weather looks  ${desc}  in  ${city}  with humidity is ${humidity} degree temperature is ${temp} degree visibility is ${visibility} and the wind speed is ${wind}. Do you like to continue.`;
 
                     // console.log("city result  \n" + Citydata);
                     //  console.log("hi.. "+ JSON.stringify(res));
