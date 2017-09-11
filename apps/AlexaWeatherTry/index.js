@@ -1,4 +1,4 @@
-// module.change_code = 1;
+module.change_code = 1;
 'use strict';
 
 var alexa = require('alexa-app');
